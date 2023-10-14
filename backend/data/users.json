@@ -1,0 +1,50 @@
+[
+    {
+        "name": "user1",
+        "passwd": "password1",
+        "levels": {
+            "serve": 5,
+            "forehand": 6,
+            "backhand": 4,
+            "forevolley": 7,
+            "backvolley": 6,
+            "overhead": 8
+        }
+    },
+    {
+        "name": "user2",
+        "passwd": "password2",
+        "levels": {
+            "serve": 3,
+            "forehand": 9,
+            "backhand": 4,
+            "forevolley": 5,
+            "backvolley": 7,
+            "overhead": 4
+        }
+    },
+    {
+        "name": "user3",
+        "passwd": "password3",
+        "levels": {
+            "serve": 8,
+            "forehand": 8,
+            "backhand": 5,
+            "forevolley": 4,
+            "backvolley": 2,
+            "overhead": 4
+        }
+    },
+    {
+        "name": "user4",
+        "passwd": "password",
+        "levels": {
+            "serve": 0,
+            "forehand": 0,
+            "backhand": 0,
+            "forevolley": 0,
+            "backvolley": 0,
+            "overhead": 0
+        }
+    }
+]
