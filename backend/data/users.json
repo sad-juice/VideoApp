@@ -1,7 +1,8 @@
 [
     {
-        "name": "user1",
-        "passwd": "password1",
+        "username": "user1",
+        "password": "password1",
+        "admin": false,
         "levels": {
             "serve": 5,
             "forehand": 6,
@@ -12,8 +13,9 @@
         }
     },
     {
-        "name": "user2",
-        "passwd": "password2",
+        "username": "user2",
+        "password": "password2",
+        "admin": false,
         "levels": {
             "serve": 3,
             "forehand": 9,
@@ -24,20 +26,22 @@
         }
     },
     {
-        "name": "user3",
-        "passwd": "password3",
+        "username": "user5",
+        "password": "password5",
+        "admin": false,
         "levels": {
-            "serve": 8,
-            "forehand": 8,
-            "backhand": 5,
-            "forevolley": 4,
-            "backvolley": 2,
-            "overhead": 4
+            "serve": 0,
+            "forehand": 0,
+            "backhand": 0,
+            "forevolley": 0,
+            "backvolley": 0,
+            "overhead": 0
         }
     },
     {
-        "name": "user4",
-        "passwd": "password",
+        "username": "user3",
+        "password": "password3",
+        "admin": false,
         "levels": {
             "serve": 0,
             "forehand": 0,
