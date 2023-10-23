@@ -10,14 +10,16 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Navigate, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { NavbarItems } from './NavbarItems';
+import { AppbarItems } from './AppbarItems';
+import { Button } from '@mui/material';
+import useLogout from '../hooks/useLogout';
+import useAuthContext from '../hooks/useAuthContext';
 
 const drawerWidth = 200;
 
@@ -87,17 +89,20 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function MiniDrawer() {
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  console.log("layout user: ", (user ? user.username : "empty"))
+  // const handleDrawerOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -116,17 +121,42 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{flexGrow: 1}}>
             Mini variant drawer
           </Typography>
+          {user && (
+            <Box>
+              <span>{user.username}</span>
+              <Button
+                key="logout"
+                sx={{ color: '#fff' }}
+                onClick={ () => logout() }
+              >
+                Logout
+              </Button>
+            </Box>
+          )}
+          {!user && (
+            <Box>
+              {AppbarItems.map((item) => (
+                <Button 
+                  key={item.label}
+                  sx={{ color: '#fff' }}
+                  onClick={() => navigate(item.route)}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
+        {/* <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
-        </DrawerHeader>
+        </DrawerHeader> */}
         <Divider />
         <List>
           {NavbarItems.map((item, index) => (
